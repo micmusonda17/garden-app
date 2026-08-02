@@ -2,10 +2,6 @@
 # This program gives you gardening tips based on the season and the
 # type of plant you are growing.
 
-# Hardcoded values for the season and plant type
-season = "summer"  # TODO: Replace with input() to allow user interaction.
-plant_type = "flower"  # TODO: Replace with input() to allow user interaction.
-
 
 def get_season_advice(season):
     """Work out the advice for the season the user is in.
@@ -57,7 +53,22 @@ def get_advice(season, plant_type):
     return advice
 
 
-# print the advice out for the user
+def ask_user():
+    """Ask the user which season it is and what they are growing.
+
+    The answers are made lower case and have any extra spaces taken off,
+    so that "  Summer " still matches "summer".
+
+    Returns:
+        tuple: The season and the plant type the user typed in.
+    """
+    season = input("What season is it? (summer / winter): ").strip().lower()
+    plant_type = input("What are you growing? (flower / vegetable): ").strip().lower()
+    return season, plant_type
+
+
+# ask the user instead of using hardcoded values, then print the advice
+season, plant_type = ask_user()
 print(get_advice(season, plant_type))
 
 # TODO: Examples of possible features to add:
